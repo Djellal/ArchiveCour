@@ -1,0 +1,1328 @@
+{
+  "info": {
+    "title": "Appdb",
+    "x-type": "odata",
+    "x-connector": "postgresql"
+  },
+  "definitions": {
+    "Category": {
+      "x-table": "public.Categories",
+      "resource": "Categories",
+      "required": [
+        "Id",
+        "NomCateg"
+      ],
+      "properties": {
+        "Id": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Category",
+              "name": "Courriers",
+              "type": "Courrier"
+            }
+          ]
+        },
+        "NomCateg": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 300
+        },
+        "Courriers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Courrier"
+          }
+        }
+      }
+    },
+    "Correspondant": {
+      "x-table": "public.Correspondants",
+      "resource": "Correspondants",
+      "required": [
+        "Id",
+        "Nom",
+        "Tel",
+        "Email"
+      ],
+      "properties": {
+        "Id": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Correspondant",
+              "name": "Courriers",
+              "type": "Courrier"
+            }
+          ]
+        },
+        "Nom": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 300
+        },
+        "Tel": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 100
+        },
+        "Email": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 100
+        },
+        "Courriers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Courrier"
+          }
+        }
+      }
+    },
+    "Courrier": {
+      "x-table": "public.Courriers",
+      "resource": "Courriers",
+      "required": [
+        "courid",
+        "DateArrivDepart",
+        "DateCorresp",
+        "num",
+        "numInterne"
+      ],
+      "properties": {
+        "courid": {
+          "x-key": true,
+          "x-nullable": false,
+          "type": "string",
+          "format": "uuid",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Courrier",
+              "name": "Documents",
+              "type": "Document"
+            }
+          ]
+        },
+        "DateArrivDepart": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        "DateCorresp": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        "Structure": {
+          "type": "object",
+          "$ref": "#/definitions/Structure"
+        },
+        "Structurid": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "Structures",
+            "parentEntityType": "Structure",
+            "type": "Structure",
+            "principalKey": "Id",
+            "name": "Structure",
+            "textProperty": "NomStructure",
+            "navigationProperty": "Courriers"
+          }
+        },
+        "TypesCourrier": {
+          "type": "object",
+          "$ref": "#/definitions/TypesCourrier"
+        },
+        "Typeid": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "TypesCourriers",
+            "parentEntityType": "TypesCourrier",
+            "type": "TypesCourrier",
+            "principalKey": "Id",
+            "name": "TypesCourrier",
+            "textProperty": "NomType",
+            "navigationProperty": "Courriers"
+          }
+        },
+        "Category": {
+          "type": "object",
+          "$ref": "#/definitions/Category"
+        },
+        "Categorid": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "Categories",
+            "parentEntityType": "Category",
+            "type": "Category",
+            "principalKey": "Id",
+            "name": "Category",
+            "textProperty": "NomCateg",
+            "navigationProperty": "Courriers"
+          }
+        },
+        "Correspondant": {
+          "type": "object",
+          "$ref": "#/definitions/Correspondant"
+        },
+        "Correspid": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "Correspondants",
+            "parentEntityType": "Correspondant",
+            "type": "Correspondant",
+            "principalKey": "Id",
+            "name": "Correspondant",
+            "textProperty": "Nom",
+            "navigationProperty": "Courriers"
+          }
+        },
+        "num": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 100
+        },
+        "numInterne": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 100
+        },
+        "Documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Document"
+          }
+        }
+      }
+    },
+    "Document": {
+      "x-table": "public.Documents",
+      "resource": "Documents",
+      "required": [
+        "Id",
+        "Chemin"
+      ],
+      "properties": {
+        "Id": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Courrier": {
+          "type": "object",
+          "$ref": "#/definitions/Courrier"
+        },
+        "Courriid": {
+          "type": "string",
+          "format": "uuid",
+          "x-foreignKey": {
+            "parentTable": "Courriers",
+            "parentEntityType": "Courrier",
+            "type": "Courrier",
+            "principalKey": "courid",
+            "name": "Courrier",
+            "textProperty": "num",
+            "navigationProperty": "Documents"
+          }
+        },
+        "Chemin": {
+          "x-nullable": false,
+          "type": "string"
+        }
+      }
+    },
+    "Structure": {
+      "x-table": "public.Structures",
+      "resource": "Structures",
+      "required": [
+        "Id",
+        "NomStructure"
+      ],
+      "properties": {
+        "Id": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Structure",
+              "name": "Courriers",
+              "type": "Courrier"
+            }
+          ]
+        },
+        "NomStructure": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 300
+        },
+        "Courriers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Courrier"
+          }
+        }
+      }
+    },
+    "TypesCourrier": {
+      "x-table": "public.TypesCourriers",
+      "resource": "TypesCourriers",
+      "required": [
+        "Id",
+        "NomType"
+      ],
+      "properties": {
+        "Id": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "TypesCourrier",
+              "name": "Courriers",
+              "type": "Courrier"
+            }
+          ]
+        },
+        "NomType": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 300
+        },
+        "Courriers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Courrier"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/Categories": {
+      "get": {
+        "operationId": "getCategories",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Category"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createCategory",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Category",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Correspondants": {
+      "get": {
+        "operationId": "getCorrespondants",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Correspondant"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createCorrespondant",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Correspondant",
+            "schema": {
+              "$ref": "#/definitions/Correspondant"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Correspondant"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Courriers": {
+      "get": {
+        "operationId": "getCourriers",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Courrier"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createCourrier",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Courrier",
+            "schema": {
+              "$ref": "#/definitions/Courrier"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Courrier"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Documents": {
+      "get": {
+        "operationId": "getDocuments",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Document"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createDocument",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Document",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Structures": {
+      "get": {
+        "operationId": "getStructures",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Structure"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createStructure",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Structure",
+            "schema": {
+              "$ref": "#/definitions/Structure"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Structure"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TypesCourriers": {
+      "get": {
+        "operationId": "getTypesCourriers",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/TypesCourrier"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTypesCourrier",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TypesCourrier",
+            "schema": {
+              "$ref": "#/definitions/TypesCourrier"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/TypesCourrier"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Categories({Id})": {
+      "delete": {
+        "operationId": "deleteCategory",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getCategoryById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateCategory",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Category",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelCategoryChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Category",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Correspondants({Id})": {
+      "delete": {
+        "operationId": "deleteCorrespondant",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getCorrespondantById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Correspondant"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateCorrespondant",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Correspondant",
+            "schema": {
+              "$ref": "#/definitions/Correspondant"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelCorrespondantChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Correspondant",
+            "schema": {
+              "$ref": "#/definitions/Correspondant"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Courriers({courid})": {
+      "delete": {
+        "operationId": "deleteCourrier",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courid",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getCourrierBycourid",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courid",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Courrier"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateCourrier",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courid",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "Courrier",
+            "schema": {
+              "$ref": "#/definitions/Courrier"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelCourrierChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Courrier",
+            "schema": {
+              "$ref": "#/definitions/Courrier"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Documents({Id})": {
+      "delete": {
+        "operationId": "deleteDocument",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getDocumentById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateDocument",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Document",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelDocumentChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Document",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Structures({Id})": {
+      "delete": {
+        "operationId": "deleteStructure",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getStructureById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Structure"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateStructure",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Structure",
+            "schema": {
+              "$ref": "#/definitions/Structure"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelStructureChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Structure",
+            "schema": {
+              "$ref": "#/definitions/Structure"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TypesCourriers({Id})": {
+      "delete": {
+        "operationId": "deleteTypesCourrier",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTypesCourrierById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/TypesCourrier"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateTypesCourrier",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "TypesCourrier",
+            "schema": {
+              "$ref": "#/definitions/TypesCourrier"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelTypesCourrierChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TypesCourrier",
+            "schema": {
+              "$ref": "#/definitions/TypesCourrier"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "basePath": "/odata/Appdb",
+  "host": "localhost:5000",
+  "schemes": [
+    "http"
+  ]
+}

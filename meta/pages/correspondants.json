@@ -1,0 +1,329 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Correspondants"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "type": "execute",
+                        "code": "await this.grid0.InsertRow(new ArchiveCorr.Models.Appdb.Correspondant())"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "simple",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getCorrespondantsResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowUpdate": [
+                      {
+                        "name": "Appdb.updateCorrespondant",
+                        "parameters": [
+                          {
+                            "name": "Id",
+                            "value": "${event.Id}"
+                          },
+                          {
+                            "name": "Correspondant",
+                            "value": "${event}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ],
+                    "rowCreate": [
+                      {
+                        "name": "Appdb.createCorrespondant",
+                        "parameters": [
+                          {
+                            "name": "Correspondant",
+                            "value": "${event}"
+                          }
+                        ],
+                        "type": "invoke",
+                        "then": [
+                          {
+                            "code": "await grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "Nom",
+                      "title": "Nom",
+                      "editTemplate": [
+                        {
+                          "name": "Nom",
+                          "style": {
+                            "width": "100%",
+                            "display": "block"
+                          },
+                          "type": "textbox",
+                          "value": "${data.Nom}"
+                        },
+                        {
+                          "type": "required-validator",
+                          "popup": true,
+                          "component": "Nom"
+                        }
+                      ]
+                    },
+                    {
+                      "property": "Tel",
+                      "title": "Tel",
+                      "editTemplate": [
+                        {
+                          "name": "Tel",
+                          "style": {
+                            "width": "100%",
+                            "display": "block"
+                          },
+                          "type": "textbox",
+                          "value": "${data.Tel}"
+                        },
+                        {
+                          "type": "required-validator",
+                          "popup": true,
+                          "component": "Tel"
+                        }
+                      ]
+                    },
+                    {
+                      "property": "Email",
+                      "title": "Email",
+                      "editTemplate": [
+                        {
+                          "name": "Email",
+                          "style": {
+                            "width": "100%",
+                            "display": "block"
+                          },
+                          "type": "textbox",
+                          "value": "${data.Email}"
+                        },
+                        {
+                          "type": "required-validator",
+                          "popup": true,
+                          "component": "Email"
+                        }
+                      ]
+                    },
+                    {
+                      "editTemplate": [
+                        {
+                          "events": {
+                            "click": [
+                              {
+                                "code": "${this.grid0.UpdateRow(data)}",
+                                "type": "execute"
+                              }
+                            ]
+                          },
+                          "icon": "save",
+                          "name": "saveButton",
+                          "size": "sm",
+                          "text": "",
+                          "type": "button"
+                        },
+                        {
+                          "buttonStyle": "secondary",
+                          "events": {
+                            "click": [
+                              {
+                                "code": "${this.grid0.CancelEditRow(data)}",
+                                "type": "execute"
+                              },
+                              {
+                                "name": "Appdb.cancelCorrespondantChanges",
+                                "parameters": [
+                                  {
+                                    "name": "Correspondant",
+                                    "value": "${data}"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          },
+                          "icon": "cancel",
+                          "name": "cancelButton",
+                          "size": "sm",
+                          "text": "",
+                          "type": "button"
+                        }
+                      ],
+                      "filterable": false,
+                      "sortable": false,
+                      "template": [
+                        {
+                          "events": {
+                            "click": [
+                              {
+                                "name": "Appdb.cancelCorrespondantChanges",
+                                "parameters": [
+                                  {
+                                    "name": "Correspondant",
+                                    "value": "${editItem}"
+                                  }
+                                ],
+                                "type": "invoke",
+                                "condition": "editItem != null"
+                              },
+                              {
+                                "code": "${await this.Load()}",
+                                "type": "execute"
+                              },
+                              {
+                                "code": "${await this.grid0.Reload()}",
+                                "type": "execute"
+                              },
+                              {
+                                "code": "${this.grid0.EditRow(data)}",
+                                "type": "execute"
+                              },
+                              {
+                                "name": "editItem",
+                                "type": "set",
+                                "value": "${data}",
+                                "valueType": "ArchiveCorr.Models.Appdb.Correspondant"
+                              }
+                            ]
+                          },
+                          "icon": "edit",
+                          "name": "editButton",
+                          "size": "sm",
+                          "text": "",
+                          "type": "button"
+                        }
+                      ],
+                      "textAlign": "center",
+                      "width": "70px"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "condition": "await DialogService.Confirm(\"Are you sure you want to delete this record?\") == true",
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete Correspondant",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "Appdb.deleteCorrespondant",
+                                "parameters": [
+                                  {
+                                    "name": "Id",
+                                    "value": "${data.Id}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "await grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "ArchiveCorr.Models.Appdb.Correspondant",
+                  "editMode": "single",
+                  "pageSize": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "correspondant",
+        "type": "set",
+        "value": "new ArchiveCorr.Models.Appdb.Correspondant(){}",
+        "valueType": "ArchiveCorr.Models.Appdb.Correspondant"
+      },
+      {
+        "name": "Appdb.getCorrespondants",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getCorrespondantsResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<ArchiveCorr.Models.Appdb.Correspondant>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Correspondants",
+  "access": "Authenticated",
+  "layout": "Main"
+}

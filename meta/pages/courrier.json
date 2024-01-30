@@ -1,0 +1,220 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Courrier"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-courrier",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "advanced",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getCourriersResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "courid",
+                            "value": "${event.courid}"
+                          }
+                        ],
+                        "path": "edit-courrier",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "DateArrivDepart",
+                      "formatString": "{0:d}",
+                      "title": "Date Arriv Depart"
+                    },
+                    {
+                      "property": "DateCorresp",
+                      "formatString": "{0:d}",
+                      "title": "Date Corresp"
+                    },
+                    {
+                      "property": "Structurid",
+                      "sortProperty": "Structure.NomStructure",
+                      "groupProperty": "Structure.NomStructure",
+                      "filterProperty": "Structure.NomStructure",
+                      "template": "${data.Structure?.NomStructure}",
+                      "title": "Structure"
+                    },
+                    {
+                      "property": "Typeid",
+                      "sortProperty": "TypesCourrier.NomType",
+                      "groupProperty": "TypesCourrier.NomType",
+                      "filterProperty": "TypesCourrier.NomType",
+                      "template": "${data.TypesCourrier?.NomType}",
+                      "title": "Types Courrier"
+                    },
+                    {
+                      "property": "Categorid",
+                      "sortProperty": "Category.NomCateg",
+                      "groupProperty": "Category.NomCateg",
+                      "filterProperty": "Category.NomCateg",
+                      "template": "${data.Category?.NomCateg}",
+                      "title": "Category"
+                    },
+                    {
+                      "property": "Correspid",
+                      "sortProperty": "Correspondant.Nom",
+                      "groupProperty": "Correspondant.Nom",
+                      "filterProperty": "Correspondant.Nom",
+                      "template": "${data.Correspondant?.Nom}",
+                      "title": "Correspondant"
+                    },
+                    {
+                      "property": "num",
+                      "title": "Num"
+                    },
+                    {
+                      "property": "numInterne",
+                      "title": "Num Interne"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "condition": "await DialogService.Confirm(\"Are you sure you want to delete this record?\") == true",
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete Courrier",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "Appdb.deleteCourrier",
+                                "parameters": [
+                                  {
+                                    "name": "courid",
+                                    "value": "${data.courid}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "await grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "ArchiveCorr.Models.Appdb.Courrier",
+                  "pageSize": 20
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "Appdb.getCourriers",
+        "parameters": [
+          {
+            "name": "$expand",
+            "value": "Documents,Structure,TypesCourrier,Category,Correspondant"
+          }
+        ],
+        "then": [
+          {
+            "name": "getCourriersResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<ArchiveCorr.Models.Appdb.Courrier>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Courrier",
+  "access": "Authenticated",
+  "layout": "Main"
+}

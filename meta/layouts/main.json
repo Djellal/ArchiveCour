@@ -1,0 +1,111 @@
+{
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "justify-content-start align-items-center",
+              "components": [
+                {
+                  "class": "col-6 d-flex align-items-center",
+                  "components": [
+                    {
+                      "items": [
+                        {
+                          "icon": "home",
+                          "path": "accueil",
+                          "text": "Accueil",
+                          "visible": "@Security.IsInRole(new string[]{\"Everybody\"})"
+                        },
+                        {
+                          "icon": "forward_to_inbox",
+                          "items": [],
+                          "path": "courrier",
+                          "text": "Courriers",
+                          "visible": "@Security.IsInRole(new string[]{\"Everybody\"})"
+                        },
+                        {
+                          "icon": "contact_mail",
+                          "path": "correspondants",
+                          "text": "Conrrespondants",
+                          "visible": "@Security.IsInRole(new string[]{\"Everybody\"})"
+                        },
+                        {
+                          "icon": "settings",
+                          "text": "Admin",
+                          "visible": "@Security.IsInRole(new string[]{\"Everybody\"})"
+                        }
+                      ],
+                      "name": "menu0",
+                      "type": "menu"
+                    }
+                  ],
+                  "name": "leftCol",
+                  "type": "col"
+                },
+                {
+                  "class": "col-6 text-right",
+                  "components": [
+                    {
+                      "name": "profilemenu0",
+                      "template": [
+                        {
+                          "email": "${Security.User?.Name}",
+                          "type": "gravatar"
+                        }
+                      ],
+                      "type": "profilemenu",
+                      "visible": "${Security.IsAuthenticated()}"
+                    }
+                  ],
+                  "name": "rightCol",
+                  "type": "col"
+                }
+              ],
+              "name": "headerRow",
+              "type": "row"
+            }
+          ],
+          "name": "header0",
+          "type": "header"
+        },
+        {
+          "components": [
+            {
+              "name": "main",
+              "type": "content-container"
+            }
+          ],
+          "name": "body0",
+          "type": "body"
+        },
+        {
+          "components": [
+            {
+              "name": "footerText",
+              "text": "ArchiveCorr, Copyright Ⓒ 2024",
+              "type": "label"
+            }
+          ],
+          "name": "footer0",
+          "style": {
+            "backgroundColor": "rgb(0, 120, 212)",
+            "color": "#e6ecef"
+          },
+          "type": "footer"
+        }
+      ],
+      "type": "layout"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "code": "await EnsureRolesAsync()",
+        "type": "execute"
+      }
+    ]
+  },
+  "name": "Main"
+}

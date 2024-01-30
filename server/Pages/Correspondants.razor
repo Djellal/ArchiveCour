@@ -1,0 +1,70 @@
+﻿@page "/correspondants"
+@layout MainLayout
+@inherits ArchiveCorr.Pages.CorrespondantsComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using ArchiveCorr.Models.Appdb
+@using Microsoft.AspNetCore.Identity;
+@using ArchiveCorr.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+<PageTitle>Correspondants</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Correspondants">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Simple" AllowPaging="true" AllowSorting="true" Data="@getCorrespondantsResult" TItem="ArchiveCorr.Models.Appdb.Correspondant" EditMode="DataGridEditMode.Single" PageSize="30" RowUpdate="@Grid0RowUpdate" RowCreate="@Grid0RowCreate">
+          <Columns>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Correspondant" Property="Nom" Title="Nom">
+              <EditTemplate Context="archiveCorrModelsAppdbCorrespondant">
+                <RadzenTextBox style="width: 100%; display: block" @bind-Value="@(archiveCorrModelsAppdbCorrespondant.Nom)" Name="Nom">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Popup="true" Component="Nom">
+                </RadzenRequiredValidator>
+              </EditTemplate>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Correspondant" Property="Tel" Title="Tel">
+              <EditTemplate Context="archiveCorrModelsAppdbCorrespondant">
+                <RadzenTextBox style="width: 100%; display: block" @bind-Value="@(archiveCorrModelsAppdbCorrespondant.Tel)" Name="Tel">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Popup="true" Component="Tel">
+                </RadzenRequiredValidator>
+              </EditTemplate>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Correspondant" Property="Email" Title="Email">
+              <EditTemplate Context="archiveCorrModelsAppdbCorrespondant">
+                <RadzenTextBox style="width: 100%; display: block" @bind-Value="@(archiveCorrModelsAppdbCorrespondant.Email)" Name="Email">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Popup="true" Component="Email">
+                </RadzenRequiredValidator>
+              </EditTemplate>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Correspondant" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="70px">
+              <Template Context="archiveCorrModelsAppdbCorrespondant">
+                <RadzenButton Icon="edit" Size="ButtonSize.Small" Click="@((args) =>EditButtonClick(args, archiveCorrModelsAppdbCorrespondant))">
+                </RadzenButton>
+              </Template>
+              <EditTemplate Context="archiveCorrModelsAppdbCorrespondant">
+                <RadzenButton Icon="save" Size="ButtonSize.Small" Click="@((args) =>SaveButtonClick(args, archiveCorrModelsAppdbCorrespondant))">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Secondary" Icon="cancel" Size="ButtonSize.Small" Click="@((args) =>CancelButtonClick(args, archiveCorrModelsAppdbCorrespondant))">
+                </RadzenButton>
+              </EditTemplate>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Correspondant" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="archiveCorrModelsAppdbCorrespondant">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, archiveCorrModelsAppdbCorrespondant))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

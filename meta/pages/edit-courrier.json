@@ -1,0 +1,572 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Courid",
+                              "component": "courid",
+                              "name": "couridLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "${courrier.courid}",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Date Arriv Depart",
+                              "component": "DateArrivDepart",
+                              "name": "DateArrivDepartLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "type": "datepicker",
+                              "name": "DateArrivDepart",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${courrier.DateArrivDepart}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "DateArrivDepartRequiredValidator",
+                              "component": "DateArrivDepart",
+                              "text": "DateArrivDepart is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Date Corresp",
+                              "component": "DateCorresp",
+                              "name": "DateCorrespLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "type": "datepicker",
+                              "name": "DateCorresp",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${courrier.DateCorresp}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "DateCorrespRequiredValidator",
+                              "component": "DateCorresp",
+                              "text": "DateCorresp is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Structure",
+                              "component": "Structurid",
+                              "name": "StructuridLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getStructuresResult}",
+                              "textProperty": "NomStructure",
+                              "valueProperty": "Id",
+                              "placeholder": "Choose Structure",
+                              "valueType": "int?",
+                              "type": "dropdown",
+                              "name": "Structurid",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${courrier.Structurid}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Types Courrier",
+                              "component": "Typeid",
+                              "name": "TypeidLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getTypesCourriersResult}",
+                              "textProperty": "NomType",
+                              "valueProperty": "Id",
+                              "placeholder": "Choose TypesCourrier",
+                              "valueType": "int?",
+                              "type": "dropdown",
+                              "name": "Typeid",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${courrier.Typeid}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Category",
+                              "component": "Categorid",
+                              "name": "CategoridLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getCategoriesResult}",
+                              "textProperty": "NomCateg",
+                              "valueProperty": "Id",
+                              "placeholder": "Choose Category",
+                              "valueType": "int?",
+                              "type": "dropdown",
+                              "name": "Categorid",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${courrier.Categorid}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Correspondant",
+                              "component": "Correspid",
+                              "name": "CorrespidLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getCorrespondantsResult}",
+                              "textProperty": "Nom",
+                              "valueProperty": "Id",
+                              "placeholder": "Choose Correspondant",
+                              "valueType": "int?",
+                              "type": "dropdown",
+                              "name": "Correspid",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${courrier.Correspid}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Num",
+                              "component": "num",
+                              "name": "numLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 100,
+                              "type": "textbox",
+                              "name": "num",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${courrier.num}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "numRequiredValidator",
+                              "component": "num",
+                              "text": "num is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Num Interne",
+                              "component": "numInterne",
+                              "name": "numInterneLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 100,
+                              "type": "textbox",
+                              "name": "numInterne",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${courrier.numInterne}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "numInterneRequiredValidator",
+                              "component": "numInterne",
+                              "text": "numInterne is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Courrier",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Appdb.updateCourrier",
+                        "parameters": [
+                          {
+                            "name": "courid",
+                            "value": "${parameters.courid}"
+                          },
+                          {
+                            "name": "Courrier",
+                            "value": "${courrier}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${courrier}",
+                            "condition": ""
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "ArchiveCorr.Models.Appdb.Courrier",
+                  "data": "${courrier}",
+                  "visible": "${courrier != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "Appdb.getCourrierBycourid",
+        "parameters": [
+          {
+            "name": "courid",
+            "value": "${parameters.courid}"
+          }
+        ],
+        "then": [
+          {
+            "name": "courrier",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "ArchiveCorr.Models.Appdb.Courrier"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "Appdb.getStructures",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getStructuresResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<ArchiveCorr.Models.Appdb.Structure>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "Appdb.getTypesCourriers",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getTypesCourriersResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<ArchiveCorr.Models.Appdb.TypesCourrier>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "Appdb.getCategories",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getCategoriesResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<ArchiveCorr.Models.Appdb.Category>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "Appdb.getCorrespondants",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getCorrespondantsResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<ArchiveCorr.Models.Appdb.Correspondant>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Courrier",
+  "access": "Authenticated",
+  "layout": "Main"
+}

@@ -1,0 +1,62 @@
+﻿@page "/courrier"
+@layout MainLayout
+@inherits ArchiveCorr.Pages.CourrierComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using ArchiveCorr.Models.Appdb
+@using Microsoft.AspNetCore.Identity;
+@using ArchiveCorr.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+<PageTitle>Courrier</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Courrier">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getCourriersResult" TItem="ArchiveCorr.Models.Appdb.Courrier" PageSize="20" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="DateArrivDepart" FormatString="{0:d}" Title="Date Arriv Depart">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="DateCorresp" FormatString="{0:d}" Title="Date Corresp">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="Structurid" SortProperty="Structure.NomStructure" GroupProperty="Structure.NomStructure" FilterProperty="Structure.NomStructure" Title="Structure">
+              <Template Context="data">
+              @(data.Structure?.NomStructure)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="Typeid" SortProperty="TypesCourrier.NomType" GroupProperty="TypesCourrier.NomType" FilterProperty="TypesCourrier.NomType" Title="Types Courrier">
+              <Template Context="data">
+              @(data.TypesCourrier?.NomType)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="Categorid" SortProperty="Category.NomCateg" GroupProperty="Category.NomCateg" FilterProperty="Category.NomCateg" Title="Category">
+              <Template Context="data">
+              @(data.Category?.NomCateg)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="Correspid" SortProperty="Correspondant.Nom" GroupProperty="Correspondant.Nom" FilterProperty="Correspondant.Nom" Title="Correspondant">
+              <Template Context="data">
+              @(data.Correspondant?.Nom)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="num" Title="Num">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="numInterne" Title="Num Interne">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="archiveCorrModelsAppdbCourrier">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, archiveCorrModelsAppdbCourrier))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

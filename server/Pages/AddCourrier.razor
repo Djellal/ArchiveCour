@@ -1,0 +1,130 @@
+﻿@page "/add-courrier"
+@layout MainLayout
+@inherits ArchiveCorr.Pages.AddCourrierComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using ArchiveCorr.Models.Appdb
+@using Microsoft.AspNetCore.Identity;
+@using ArchiveCorr.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+<PageTitle>Add Courrier</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@courrier" Visible="@(courrier != null)" TItem="ArchiveCorr.Models.Appdb.Courrier" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Courid" Component="courid" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenLabel Text="@($"{(courrier.courid)}")" style="width: 100%">
+                </RadzenLabel>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Date Arriv Depart" Component="DateArrivDepart" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker style="display: block; width: 100%" @bind-Value="@(courrier.DateArrivDepart)" Name="DateArrivDepart">
+                </RadzenDatePicker>
+                <RadzenRequiredValidator Component="DateArrivDepart" Text="DateArrivDepart is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Date Corresp" Component="DateCorresp" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker style="display: block; width: 100%" @bind-Value="@(courrier.DateCorresp)" Name="DateCorresp">
+                </RadzenDatePicker>
+                <RadzenRequiredValidator Component="DateCorresp" Text="DateCorresp is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Structure" Component="Structurid" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getStructuresResult" TextProperty="NomStructure" ValueProperty="Id" Placeholder="Choose Structure" style="width: 100%" @bind-Value="@(courrier.Structurid)" Name="Structurid">
+                </RadzenDropDown>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Types Courrier" Component="Typeid" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getTypesCourriersResult" TextProperty="NomType" ValueProperty="Id" Placeholder="Choose TypesCourrier" style="width: 100%" @bind-Value="@(courrier.Typeid)" Name="Typeid">
+                </RadzenDropDown>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Category" Component="Categorid" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getCategoriesResult" TextProperty="NomCateg" ValueProperty="Id" Placeholder="Choose Category" style="width: 100%" @bind-Value="@(courrier.Categorid)" Name="Categorid">
+                </RadzenDropDown>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Correspondant" Component="Correspid" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getCorrespondantsResult" TextProperty="Nom" ValueProperty="Id" Placeholder="Choose Correspondant" style="width: 100%" @bind-Value="@(courrier.Correspid)" Name="Correspid">
+                </RadzenDropDown>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Num" Component="num" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="100" style="display: block; width: 100%" @bind-Value="@(courrier.num)" Name="Num">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Num" Text="num is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Num Interne" Component="numInterne" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="100" style="display: block; width: 100%" @bind-Value="@(courrier.numInterne)" Name="NumInterne">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="NumInterne" Text="numInterne is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

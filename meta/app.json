@@ -1,0 +1,55 @@
+{
+  "dataSources": [
+    "Appdb"
+  ],
+  "generator": "@radzen/blazor-server",
+  "https": false,
+  "layouts": [
+    "Login",
+    "Main"
+  ],
+  "logo": "",
+  "name": "ArchiveCorr",
+  "navigation": [
+    "Accueil",
+    "Correspondants",
+    "Courrier"
+  ],
+  "pages": [
+    "Login",
+    "Application Users",
+    "Application Roles",
+    "Add Application Role",
+    "Add Application User",
+    "Register Application User",
+    "Edit Application User",
+    "Profile",
+    "Unauthorized",
+    "Accueil",
+    "Correspondants",
+    "Courrier",
+    "Add Courrier",
+    "Edit Courrier"
+  ],
+  "security": {
+    "autoGeneratePages": true,
+    "dataSource": "Appdb",
+    "duration": 5,
+    "emailConfirmation": false,
+    "layout": "Main",
+    "loginLayout": "Login",
+    "loginPage": "Login",
+    "provider": "default",
+    "sessionRefresh": false,
+    "smtpFrom": "",
+    "smtpPassword": "",
+    "smtpSSL": false,
+    "smtpServer": "",
+    "smtpUser": ""
+  },
+  "serverLang": "cs",
+  "serverProject": true,
+  "serverVersion": "7",
+  "startPage": "Accueil",
+  "theme": "fluent"
+}

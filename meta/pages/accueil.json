@@ -1,0 +1,62 @@
+{
+  "access": [
+    "Everybody"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "justify-content-between d-flex col-md-12",
+              "components": [
+                {
+                  "components": [
+                    {
+                      "name": "image0",
+                      "path": "/assets/images/logoufas.png",
+                      "type": "image"
+                    }
+                  ],
+                  "name": "card0",
+                  "style": {},
+                  "type": "card",
+                  "visible": true
+                },
+                {
+                  "name": "card1",
+                  "style": {
+                    "width": "100%"
+                  },
+                  "type": "card",
+                  "visible": true
+                },
+                {
+                  "components": [
+                    {
+                      "name": "image1",
+                      "path": "/assets/images/logoufas.png",
+                      "type": "image"
+                    }
+                  ],
+                  "name": "card2",
+                  "style": {},
+                  "type": "card",
+                  "visible": true
+                }
+              ],
+              "name": "col0",
+              "type": "col"
+            }
+          ],
+          "name": "row0",
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "layout": "Main",
+  "name": "Accueil"
+}

@@ -1,0 +1,34 @@
+﻿@page "/"
+@page "/accueil"
+@layout MainLayout
+@inherits ArchiveCorr.Pages.AccueilComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using ArchiveCorr.Models.Appdb
+@using Microsoft.AspNetCore.Identity;
+@using ArchiveCorr.Models
+@using Microsoft.AspNetCore.Authorization
+<PageTitle>Accueil</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="justify-content-between d-flex col-md-12">
+        <RadzenCard >
+          <ChildContent>
+            <RadzenImage Path="assets/images/logoufas.png">
+            </RadzenImage>
+          </ChildContent>
+        </RadzenCard>
+        <RadzenCard style="width: 100%">
+        </RadzenCard>
+        <RadzenCard >
+          <ChildContent>
+            <RadzenImage Path="assets/images/logoufas.png">
+            </RadzenImage>
+          </ChildContent>
+        </RadzenCard>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>
