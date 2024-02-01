@@ -15,25 +15,25 @@
                         {
                           "icon": "home",
                           "path": "accueil",
-                          "text": "Accueil",
+                          "text": "الرئيسية",
                           "visible": "@Security.IsInRole(new string[]{\"Everybody\"})"
                         },
                         {
                           "icon": "forward_to_inbox",
                           "items": [],
                           "path": "courrier",
-                          "text": "Courriers",
+                          "text": "المراسلات",
                           "visible": "@Security.IsInRole(new string[]{\"Everybody\"})"
                         },
                         {
                           "icon": "contact_mail",
                           "path": "correspondants",
-                          "text": "Conrrespondants",
+                          "text": "المراسلون",
                           "visible": "@Security.IsInRole(new string[]{\"Everybody\"})"
                         },
                         {
                           "icon": "settings",
-                          "text": "Admin",
+                          "text": "الإدارة",
                           "visible": "@Security.IsInRole(new string[]{\"Everybody\"})"
                         }
                       ],
@@ -83,9 +83,22 @@
         {
           "components": [
             {
-              "name": "footerText",
-              "text": "ArchiveCorr, Copyright Ⓒ 2024",
-              "type": "label"
+              "components": [
+                {
+                  "class": "col-md-12",
+                  "components": [
+                    {
+                      "name": "footerText",
+                      "text": "ArchiveCorr, Copyright Ⓒ 2024",
+                      "type": "label"
+                    }
+                  ],
+                  "name": "col0",
+                  "type": "col"
+                }
+              ],
+              "name": "row0",
+              "type": "row"
             }
           ],
           "name": "footer0",

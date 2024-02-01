@@ -1,0 +1,31 @@
+{
+  "access": [
+    "Everybody"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "pdfviewer",
+          "type": "heading"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "doc",
+        "type": "set",
+        "value": "\"Cours_ET2017_Pernot.pdf\"",
+        "valueType": "string"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "pdfviewer"
+}

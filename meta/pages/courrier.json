@@ -1,35 +1,39 @@
 {
+  "access": "Authenticated",
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
-          "name": "pageTitle",
-          "size": "H1",
-          "text": "Courrier"
-        },
-        {
-          "type": "row",
           "components": [
             {
-              "type": "col",
-              "class": "col-md-12",
+              "class": "col-md-10",
               "components": [
                 {
-                  "icon": "add_circle_outline",
-                  "name": "button0",
+                  "alertStyle": "AlertStyle.Primary",
+                  "allowClose": false,
+                  "icon": "email",
+                  "name": "alert0",
+                  "size": "AlertSize.Small",
                   "style": {
-                    "marginBottom": "10px"
+                    "fontSize": "20px"
                   },
-                  "text": "Add",
-                  "type": "button",
+                  "text": "",
+                  "title": "المراسلات",
+                  "type": "alert",
+                  "variant": "Variant.Outlined"
+                }
+              ],
+              "name": "col0",
+              "type": "col"
+            },
+            {
+              "class": "col-md-2",
+              "components": [
+                {
                   "events": {
                     "click": [
                       {
                         "path": "add-courrier",
-                        "type": "popup",
                         "then": [
                           {
                             "code": "await grid0.Reload();",
@@ -38,101 +42,90 @@
                           {
                             "code": "await InvokeAsync(() => { StateHasChanged(); });",
                             "type": "execute"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                },
-                {
-                  "name": "grid0",
-                  "allowFiltering": true,
-                  "filterMode": "advanced",
-                  "allowPaging": true,
-                  "allowSorting": true,
-                  "data": "${getCourriersResult}",
-                  "events": {
-                    "loadData": [],
-                    "rowSelect": [
-                      {
-                        "parameters": [
-                          {
-                            "name": "courid",
-                            "value": "${event.courid}"
                           }
                         ],
-                        "path": "edit-courrier",
-                        "type": "popup",
-                        "then": [
-                          {
-                            "code": "await grid0.Reload();",
-                            "type": "execute"
-                          },
-                          {
-                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
-                            "type": "execute"
-                          }
-                        ]
+                        "type": "popup"
                       }
                     ]
                   },
-                  "title": "",
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "height": "75%",
+                    "marginBottom": "8px",
+                    "marginTop": "8px",
+                    "width": "100%"
+                  },
+                  "text": "إضافة",
+                  "type": "button"
+                }
+              ],
+              "name": "col1",
+              "type": "col"
+            }
+          ],
+          "name": "row0",
+          "type": "row"
+        },
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
                   "columns": [
                     {
-                      "property": "DateArrivDepart",
-                      "formatString": "{0:d}",
-                      "title": "Date Arriv Depart"
-                    },
-                    {
-                      "property": "DateCorresp",
-                      "formatString": "{0:d}",
-                      "title": "Date Corresp"
-                    },
-                    {
-                      "property": "Structurid",
-                      "sortProperty": "Structure.NomStructure",
-                      "groupProperty": "Structure.NomStructure",
-                      "filterProperty": "Structure.NomStructure",
-                      "template": "${data.Structure?.NomStructure}",
-                      "title": "Structure"
-                    },
-                    {
-                      "property": "Typeid",
-                      "sortProperty": "TypesCourrier.NomType",
-                      "groupProperty": "TypesCourrier.NomType",
-                      "filterProperty": "TypesCourrier.NomType",
-                      "template": "${data.TypesCourrier?.NomType}",
-                      "title": "Types Courrier"
-                    },
-                    {
-                      "property": "Categorid",
-                      "sortProperty": "Category.NomCateg",
-                      "groupProperty": "Category.NomCateg",
-                      "filterProperty": "Category.NomCateg",
-                      "template": "${data.Category?.NomCateg}",
-                      "title": "Category"
-                    },
-                    {
-                      "property": "Correspid",
-                      "sortProperty": "Correspondant.Nom",
-                      "groupProperty": "Correspondant.Nom",
-                      "filterProperty": "Correspondant.Nom",
-                      "template": "${data.Correspondant?.Nom}",
-                      "title": "Correspondant"
+                      "property": "numInterne",
+                      "title": "N°",
+                      "width": "100px"
                     },
                     {
                       "property": "num",
-                      "title": "Num"
+                      "title": "رقم المراسلة",
+                      "width": "100px"
                     },
                     {
-                      "property": "numInterne",
-                      "title": "Num Interne"
+                      "formatString": "{0:d}",
+                      "property": "DateArrivDepart",
+                      "title": "تاريخ الوصول",
+                      "width": "120px"
+                    },
+                    {
+                      "formatString": "{0:d}",
+                      "property": "DateCorresp",
+                      "title": "تاريخ المراسلة",
+                      "width": "120px"
+                    },
+                    {
+                      "filterProperty": "Correspondant.Nom",
+                      "groupProperty": "Correspondant.Nom",
+                      "property": "Correspid",
+                      "sortProperty": "Correspondant.Nom",
+                      "template": "${data.Correspondant?.Nom}",
+                      "title": "المرسل",
+                      "width": "250px"
+                    },
+                    {
+                      "format": "",
+                      "property": "Objet",
+                      "title": "الموضوع",
+                      "type": "string"
+                    },
+                    {
+                      "filterProperty": "Category.NomCateg",
+                      "groupProperty": "Category.NomCateg",
+                      "property": "Categorid",
+                      "sortProperty": "Category.NomCateg",
+                      "template": "${data.Category?.NomCateg}",
+                      "title": "الصنف",
+                      "width": "250px"
                     },
                     {
                       "filterable": false,
                       "sortable": false,
-                      "width": "70px",
-                      "textAlign": "center",
                       "template": [
                         {
                           "attributes": [
@@ -142,11 +135,6 @@
                             }
                           ],
                           "buttonStyle": "danger",
-                          "icon": "close",
-                          "name": "gridDeleteButton",
-                          "text": "",
-                          "size": "sm",
-                          "type": "button",
                           "events": {
                             "click": [
                               {
@@ -176,20 +164,60 @@
                                 "type": "invoke"
                               }
                             ]
-                          }
+                          },
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "size": "sm",
+                          "text": "",
+                          "type": "button"
                         }
-                      ]
+                      ],
+                      "textAlign": "center",
+                      "width": "70px"
                     }
                   ],
-                  "type": "datagrid",
+                  "data": "${getCourriersResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "courid",
+                            "value": "${event.courid}"
+                          }
+                        ],
+                        "path": "edit-courrier",
+                        "then": [
+                          {
+                            "code": "await grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ],
+                        "type": "popup"
+                      }
+                    ]
+                  },
+                  "filterMode": "simple",
                   "itemType": "ArchiveCorr.Models.Appdb.Courrier",
-                  "pageSize": 20
+                  "name": "grid0",
+                  "pageSize": 20,
+                  "title": "",
+                  "type": "datagrid"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
@@ -214,7 +242,6 @@
       }
     ]
   },
-  "name": "Courrier",
-  "access": "Authenticated",
-  "layout": "Main"
+  "layout": "Main",
+  "name": "Courrier"
 }

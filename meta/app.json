@@ -1,15 +1,23 @@
 {
+  "cssFiles": [],
   "dataSources": [
     "Appdb"
   ],
   "generator": "@radzen/blazor-server",
   "https": false,
+  "ignore": [
+    "Program.cs",
+    "Pdfviewer.razor",
+    "_Host.cshtml"
+  ],
+  "javaScriptFiles": [],
   "layouts": [
     "Login",
     "Main"
   ],
   "logo": "",
   "name": "ArchiveCorr",
+  "namespaces": [],
   "navigation": [
     "Accueil",
     "Correspondants",
@@ -29,8 +37,10 @@
     "Correspondants",
     "Courrier",
     "Add Courrier",
-    "Edit Courrier"
+    "Edit Courrier",
+    "pdfviewer"
   ],
+  "port": 8000,
   "security": {
     "autoGeneratePages": true,
     "dataSource": "Appdb",
@@ -48,8 +58,10 @@
     "smtpUser": ""
   },
   "serverLang": "cs",
+  "serverPort": 5000,
   "serverProject": true,
   "serverVersion": "7",
   "startPage": "Accueil",
-  "theme": "fluent"
+  "theme": "fluent",
+  "title": "ArchiveCorr"
 }

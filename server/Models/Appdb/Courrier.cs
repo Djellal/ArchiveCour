@@ -50,6 +50,11 @@ namespace ArchiveCorr.Models.Appdb
       set;
     }
     public Correspondant Correspondant { get; set; }
+    public string Objet
+    {
+      get;
+      set;
+    }
     public string num
     {
       get;

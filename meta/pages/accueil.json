@@ -13,12 +13,12 @@
                 {
                   "components": [
                     {
-                      "name": "image0",
-                      "path": "/assets/images/logoufas.png",
+                      "name": "image1",
+                      "path": "/assets/images/logo.png",
                       "type": "image"
                     }
                   ],
-                  "name": "card0",
+                  "name": "card2",
                   "style": {},
                   "type": "card",
                   "visible": true
@@ -28,19 +28,6 @@
                   "style": {
                     "width": "100%"
                   },
-                  "type": "card",
-                  "visible": true
-                },
-                {
-                  "components": [
-                    {
-                      "name": "image1",
-                      "path": "/assets/images/logoufas.png",
-                      "type": "image"
-                    }
-                  ],
-                  "name": "card2",
-                  "style": {},
                   "type": "card",
                   "visible": true
                 }

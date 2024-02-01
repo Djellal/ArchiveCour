@@ -12,43 +12,41 @@
 <PageTitle>Courrier</PageTitle>
 <RadzenContent Container="main">
   <ChildContent>
-    <RadzenHeading Size="H1" Text="Courrier">
-    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-10">
+        <RadzenAlert AlertStyle="AlertStyle.Primary" AllowClose="false" Icon="email" Size="AlertSize.Small" style="font-size: 20px" Title="المراسلات" Variant="Variant.Outlined">
+        </RadzenAlert>
+      </div>
+      <div class="col-md-2">
+        <RadzenButton Icon="add_circle_outline" style="height: 75%; margin-bottom: 8px; margin-top: 8px; width: 100%" Text="إضافة" Click="@Button0Click">
+        </RadzenButton>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12">
-        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
-        </RadzenButton>
-        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getCourriersResult" TItem="ArchiveCorr.Models.Appdb.Courrier" PageSize="20" RowSelect="@Grid0RowSelect">
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getCourriersResult" FilterMode="Radzen.FilterMode.Simple" TItem="ArchiveCorr.Models.Appdb.Courrier" PageSize="20" RowSelect="@Grid0RowSelect">
           <Columns>
-            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="DateArrivDepart" FormatString="{0:d}" Title="Date Arriv Depart">
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="numInterne" Title="N°" Width="100px">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="DateCorresp" FormatString="{0:d}" Title="Date Corresp">
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="num" Title="رقم المراسلة" Width="100px">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="Structurid" SortProperty="Structure.NomStructure" GroupProperty="Structure.NomStructure" FilterProperty="Structure.NomStructure" Title="Structure">
-              <Template Context="data">
-              @(data.Structure?.NomStructure)
-              </Template>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" FormatString="{0:d}" Property="DateArrivDepart" Title="تاريخ الوصول" Width="120px">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="Typeid" SortProperty="TypesCourrier.NomType" GroupProperty="TypesCourrier.NomType" FilterProperty="TypesCourrier.NomType" Title="Types Courrier">
-              <Template Context="data">
-              @(data.TypesCourrier?.NomType)
-              </Template>
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" FormatString="{0:d}" Property="DateCorresp" Title="تاريخ المراسلة" Width="120px">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="Categorid" SortProperty="Category.NomCateg" GroupProperty="Category.NomCateg" FilterProperty="Category.NomCateg" Title="Category">
-              <Template Context="data">
-              @(data.Category?.NomCateg)
-              </Template>
-            </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="Correspid" SortProperty="Correspondant.Nom" GroupProperty="Correspondant.Nom" FilterProperty="Correspondant.Nom" Title="Correspondant">
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" FilterProperty="Correspondant.Nom" GroupProperty="Correspondant.Nom" Property="Correspid" SortProperty="Correspondant.Nom" Title="المرسل" Width="250px">
               <Template Context="data">
               @(data.Correspondant?.Nom)
               </Template>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="num" Title="Num">
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="Objet" Title="الموضوع">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Property="numInterne" Title="Num Interne">
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" FilterProperty="Category.NomCateg" GroupProperty="Category.NomCateg" Property="Categorid" SortProperty="Category.NomCateg" Title="الصنف" Width="250px">
+              <Template Context="data">
+              @(data.Category?.NomCateg)
+              </Template>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+            <RadzenDataGridColumn TItem="ArchiveCorr.Models.Appdb.Courrier" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="70px">
               <Template Context="archiveCorrModelsAppdbCourrier">
                 <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, archiveCorrModelsAppdbCourrier))" @onclick:stopPropagation="true">
                 </RadzenButton>

@@ -52,6 +52,10 @@ namespace ArchiveCorr.Data
               .HasForeignKey(i => i.Courriid)
               .HasPrincipalKey(i => i.courid);
 
+        builder.Entity<ArchiveCorr.Models.Appdb.Courrier>()
+              .Property(p => p.Objet)
+              .HasDefaultValueSql("''::text");
+
         this.OnModelBuilding(builder);
     }
 

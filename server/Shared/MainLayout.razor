@@ -19,13 +19,13 @@
           <div class="col-6 d-flex align-items-center">
             <RadzenMenu>
               <ChildContent>
-                <RadzenMenuItem Icon="home" Path="accueil" Text="Accueil" Visible="@Security.IsInRole(new string[]{"Everybody"})">
+                <RadzenMenuItem Icon="home" Path="accueil" Text="الرئيسية" Visible="@Security.IsInRole(new string[]{"Everybody"})">
                 </RadzenMenuItem>
-                <RadzenMenuItem Icon="forward_to_inbox" Path="courrier" Text="Courriers" Visible="@Security.IsInRole(new string[]{"Everybody"})">
+                <RadzenMenuItem Icon="forward_to_inbox" Path="courrier" Text="المراسلات" Visible="@Security.IsInRole(new string[]{"Everybody"})">
                 </RadzenMenuItem>
-                <RadzenMenuItem Icon="contact_mail" Path="correspondants" Text="Conrrespondants" Visible="@Security.IsInRole(new string[]{"Everybody"})">
+                <RadzenMenuItem Icon="contact_mail" Path="correspondants" Text="المراسلون" Visible="@Security.IsInRole(new string[]{"Everybody"})">
                 </RadzenMenuItem>
-                <RadzenMenuItem Icon="settings" Text="Admin" Visible="@Security.IsInRole(new string[]{"Everybody"})">
+                <RadzenMenuItem Icon="settings" Text="الإدارة" Visible="@Security.IsInRole(new string[]{"Everybody"})">
                 </RadzenMenuItem>
               </ChildContent>
             </RadzenMenu>
@@ -60,8 +60,12 @@
     </RadzenBody>
     <RadzenFooter style="background-color: rgb(0, 120, 212); color: #e6ecef">
       <ChildContent>
-        <RadzenLabel Text="ArchiveCorr, Copyright Ⓒ 2024">
-        </RadzenLabel>
+        <div class="row">
+          <div class="col-md-12">
+            <RadzenLabel Text="ArchiveCorr, Copyright Ⓒ 2024">
+            </RadzenLabel>
+          </div>
+        </div>
       </ChildContent>
     </RadzenFooter>
   </ChildContent>

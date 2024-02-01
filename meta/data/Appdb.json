@@ -183,6 +183,11 @@
             "navigationProperty": "Courriers"
           }
         },
+        "Objet": {
+          "x-default-sql": "''::text",
+          "x-nullable": false,
+          "type": "string"
+        },
         "num": {
           "x-nullable": false,
           "type": "string",
@@ -228,7 +233,7 @@
             "type": "Courrier",
             "principalKey": "courid",
             "name": "Courrier",
-            "textProperty": "num",
+            "textProperty": "Objet",
             "navigationProperty": "Documents"
           }
         },

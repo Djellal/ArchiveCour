@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASLFrIJsegkmj3CBst82rSgAAAAACAAAAAAAQZgAAAAEAACAAAACsBx3wUAxwKf1kuca1zS+mxQneJKFEtpHBgyE+bF3h4QAAAAAOgAAAAAIAACAAAAAiWBliZW+g+IDcmY9nf+9WS8W3vlYApNaWm2nyLebvhCAAAACr4Ysd2DBdYOgfXqw9gI+wD5TpHLRm8B2jmXq5faYghEAAAAD0xZ9gd5LCusR3+Fg2RFsLJ7K1nCqIcjjqhWyT4zSd3T1+m30GRh0anOaFib1YEB9x0eoO88syJzrEEzST50d3</EncryptedPassword>
+    <_PublishTargetUrl>ftp://41.111.206.167/ArchiveCour</_PublishTargetUrl>
+    <History>True|2024-02-01T10:04:24.4352192Z;True|2024-02-01T09:57:41.8782563+01:00;True|2024-01-31T12:22:59.2149967+01:00;True|2024-01-31T12:18:54.6627494+01:00;True|2024-01-31T12:17:56.1399153+01:00;True|2024-01-31T11:20:11.7058982+01:00;True|2024-01-31T10:22:06.4296908+01:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.json">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="ArchiveCorr.deps.json">
+      <publishTime>02/01/2024 11:04:10</publishTime>
+    </File>
+    <File Include="ArchiveCorr.dll">
+      <publishTime>02/01/2024 11:04:09</publishTime>
+    </File>
+    <File Include="ArchiveCorr.exe">
+      <publishTime>02/01/2024 11:04:09</publishTime>
+    </File>
+    <File Include="ArchiveCorr.pdb">
+      <publishTime>02/01/2024 11:04:09</publishTime>
+    </File>
+    <File Include="ArchiveCorr.runtimeconfig.json">
+      <publishTime>01/31/2024 10:21:24</publishTime>
+    </File>
+    <File Include="Azure.Core.dll">
+      <publishTime>09/07/2023 18:50:30</publishTime>
+    </File>
+    <File Include="Azure.Identity.dll">
+      <publishTime>10/18/2023 20:59:42</publishTime>
+    </File>
+    <File Include="DocumentFormat.OpenXml.dll">
+      <publishTime>04/06/2023 20:08:14</publishTime>
+    </File>
+    <File Include="Humanizer.dll">
+      <publishTime>01/29/2022 16:04:04</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Authorization.dll">
+      <publishTime>10/23/2023 22:34:00</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Components.dll">
+      <publishTime>10/23/2023 22:33:08</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll">
+      <publishTime>10/19/2022 07:08:04</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Metadata.dll">
+      <publishTime>10/23/2023 22:33:56</publishTime>
+    </File>
+    <File Include="Microsoft.Bcl.AsyncInterfaces.dll">
+      <publishTime>04/14/2020 23:39:12</publishTime>
+    </File>
+    <File Include="Microsoft.Data.SqlClient.dll">
+      <publishTime>01/27/2024 03:49:44</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Abstractions.dll">
+      <publishTime>10/19/2022 03:07:56</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Design.dll">
+      <publishTime>10/19/2022 03:08:38</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.dll">
+      <publishTime>10/19/2022 03:08:20</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Relational.dll">
+      <publishTime>10/19/2022 03:08:34</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.SqlServer.dll">
+      <publishTime>10/19/2022 03:08:46</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyModel.dll">
+      <publishTime>10/18/2022 17:15:30</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Logging.Abstractions.dll">
+      <publishTime>05/24/2023 15:39:12</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Options.dll">
+      <publishTime>01/20/2023 00:54:36</publishTime>
+    </File>
+    <File Include="Microsoft.Identity.Client.dll">
+      <publishTime>09/05/2023 19:25:28</publishTime>
+    </File>
+    <File Include="Microsoft.Identity.Client.Extensions.Msal.dll">
+      <publishTime>09/05/2023 19:31:58</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Abstractions.dll">
+      <publishTime>12/01/2023 05:56:56</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.JsonWebTokens.dll">
+      <publishTime>12/01/2023 05:34:00</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Logging.dll">
+      <publishTime>12/01/2023 05:35:22</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Protocols.dll">
+      <publishTime>12/01/2023 05:37:28</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll">
+      <publishTime>12/01/2023 05:48:08</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Tokens.dll">
+      <publishTime>12/01/2023 05:41:50</publishTime>
+    </File>
+    <File Include="Microsoft.SqlServer.Server.dll">
+      <publishTime>01/27/2022 18:19:08</publishTime>
+    </File>
+    <File Include="Microsoft.Win32.SystemEvents.dll">
+      <publishTime>10/23/2021 00:40:24</publishTime>
+    </File>
+    <File Include="Mono.TextTemplating.dll">
+      <publishTime>02/23/2021 04:04:28</publishTime>
+    </File>
+    <File Include="Npgsql.dll">
+      <publishTime>11/09/2022 19:10:56</publishTime>
+    </File>
+    <File Include="Npgsql.EntityFrameworkCore.PostgreSQL.dll">
+      <publishTime>11/09/2022 21:34:04</publishTime>
+    </File>
+    <File Include="Radzen.Blazor.dll">
+      <publishTime>01/09/2024 11:06:56</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/net6.0/Microsoft.Data.SqlClient.dll">
+      <publishTime>01/27/2024 03:49:42</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/net6.0/System.Drawing.Common.dll">
+      <publishTime>10/23/2021 00:51:42</publishTime>
+    </File>
+    <File Include="runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll">
+      <publishTime>08/11/2023 19:56:28</publishTime>
+    </File>
+    <File Include="runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll">
+      <publishTime>08/11/2023 19:56:28</publishTime>
+    </File>
+    <File Include="runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll">
+      <publishTime>08/11/2023 19:56:18</publishTime>
+    </File>
+    <File Include="runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll">
+      <publishTime>08/11/2023 19:56:18</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/Microsoft.Data.SqlClient.dll">
+      <publishTime>01/27/2024 03:49:42</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll">
+      <publishTime>10/23/2021 00:40:18</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/System.Drawing.Common.dll">
+      <publishTime>10/23/2021 00:48:10</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/System.Runtime.Caching.dll">
+      <publishTime>10/23/2021 00:52:44</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll">
+      <publishTime>10/23/2021 00:51:04</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/System.Windows.Extensions.dll">
+      <publishTime>10/23/2021 00:49:58</publishTime>
+    </File>
+    <File Include="System.CodeDom.dll">
+      <publishTime>07/19/2017 11:01:30</publishTime>
+    </File>
+    <File Include="System.Configuration.ConfigurationManager.dll">
+      <publishTime>08/19/2022 20:58:02</publishTime>
+    </File>
+    <File Include="System.Drawing.Common.dll">
+      <publishTime>10/23/2021 00:49:12</publishTime>
+    </File>
+    <File Include="System.IdentityModel.Tokens.Jwt.dll">
+      <publishTime>12/01/2023 05:31:48</publishTime>
+    </File>
+    <File Include="System.IO.Packaging.dll">
+      <publishTime>11/15/2019 09:37:18</publishTime>
+    </File>
+    <File Include="System.Linq.Dynamic.Core.dll">
+      <publishTime>11/20/2023 16:17:46</publishTime>
+    </File>
+    <File Include="System.Memory.Data.dll">
+      <publishTime>04/08/2021 17:45:54</publishTime>
+    </File>
+    <File Include="System.Runtime.Caching.dll">
+      <publishTime>10/23/2021 00:52:02</publishTime>
+    </File>
+    <File Include="System.Security.Cryptography.ProtectedData.dll">
+      <publishTime>10/23/2021 00:51:04</publishTime>
+    </File>
+    <File Include="System.Security.Permissions.dll">
+      <publishTime>10/23/2021 00:49:50</publishTime>
+    </File>
+    <File Include="System.Windows.Extensions.dll">
+      <publishTime>10/23/2021 00:49:44</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>02/01/2024 11:04:11</publishTime>
+    </File>
+    <File Include="wwwroot/assets/css/fluent.css">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/css/styles-generated.css">
+      <publishTime>01/30/2024 12:45:10</publishTime>
+    </File>
+    <File Include="wwwroot/assets/css/styles.css">
+      <publishTime>01/30/2024 12:45:10</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/MaterialIcons-Regular.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/roboto-regular.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/roboto-v15-latin-300.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/roboto-v15-latin-700.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/roboto-v15-latin-regular.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/roboto-v30-latin-300.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/roboto-v30-latin-500.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/roboto-v30-latin-700.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/roboto-v30-latin-regular.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-Black.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-BlackIt.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-Bold.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-BoldIt.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-ExtraLight.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-ExtraLightIt.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-It.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-Light.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-LightIt.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-Regular.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-Semibold.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/fonts/SourceSansPro-SemiboldIt.woff">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/images/logo.png">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/assets/images/logoufas.png">
+      <publishTime>02/01/2024 11:03:40</publishTime>
+    </File>
+    <File Include="wwwroot/Cours_ET2017_Pernot.pdf">
+      <publishTime>07/09/2021 10:48:43</publishTime>
+    </File>
+    <File Include="wwwroot/favicon.ico">
+      <publishTime>01/30/2024 12:45:10</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/dark-base.css">
+      <publishTime>01/09/2024 11:05:56</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/dark.css">
+      <publishTime>01/09/2024 11:06:06</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/default-base.css">
+      <publishTime>01/09/2024 11:06:12</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/default.css">
+      <publishTime>01/09/2024 11:06:22</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/fluent-base.css">
+      <publishTime>11/13/2023 09:33:26</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/fluent-dark-base.css">
+      <publishTime>11/13/2023 09:33:28</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/fluent-dark.css">
+      <publishTime>11/13/2023 09:33:32</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/fluent.css">
+      <publishTime>11/13/2023 09:33:34</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/humanistic-base.css">
+      <publishTime>01/09/2024 11:06:34</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/humanistic.css">
+      <publishTime>01/09/2024 11:06:42</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/material-base.css">
+      <publishTime>01/09/2024 11:06:48</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/material-dark-base.css">
+      <publishTime>11/13/2023 09:33:38</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/material-dark.css">
+      <publishTime>11/13/2023 09:33:40</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/material.css">
+      <publishTime>01/09/2024 11:06:58</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/material3-base.css">
+      <publishTime>11/13/2023 09:33:44</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/material3-dark-base.css">
+      <publishTime>11/13/2023 09:33:44</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/material3-dark.css">
+      <publishTime>11/13/2023 09:33:46</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/material3.css">
+      <publishTime>11/13/2023 09:33:48</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/software-base.css">
+      <publishTime>01/09/2024 11:07:00</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/software.css">
+      <publishTime>01/09/2024 11:07:06</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/standard-base.css">
+      <publishTime>01/09/2024 11:07:10</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/css/standard.css">
+      <publishTime>01/09/2024 11:07:14</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/MaterialIcons-Regular.woff">
+      <publishTime>01/11/2023 15:42:26</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/roboto-v15-latin-300.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/roboto-v15-latin-700.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/roboto-v15-latin-regular.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/roboto-v30-latin-300.woff">
+      <publishTime>01/11/2023 15:42:26</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/roboto-v30-latin-500.woff">
+      <publishTime>01/11/2023 15:42:26</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/roboto-v30-latin-700.woff">
+      <publishTime>01/11/2023 15:42:26</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/roboto-v30-latin-regular.woff">
+      <publishTime>01/11/2023 15:42:26</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-Black.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-BlackIt.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-Bold.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-BoldIt.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-ExtraLight.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-ExtraLightIt.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-It.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-Light.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-LightIt.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-Regular.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-Semibold.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/fonts/SourceSansPro-SemiboldIt.woff">
+      <publishTime>08/15/2019 15:49:52</publishTime>
+    </File>
+    <File Include="wwwroot/_content/Radzen.Blazor/Radzen.Blazor.js">
+      <publishTime>01/09/2024 11:03:06</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
